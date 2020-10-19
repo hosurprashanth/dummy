@@ -1,9 +1,9 @@
+
+
 execute 'apt-get update' do
-      command 'apt-get update -y '
+      command 'apt-get update -y'
 end
 
-reboot 'ubuntu' do
-  action :reboot_now
-  notifies :immediately
+reboot 'node' do
+  action :request_reboot
 end
-  
