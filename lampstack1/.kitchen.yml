@@ -1,14 +1,12 @@
 ---
 driver:
   name: vagrant
-  provider: virtualbox
 
 provisioner:
   name: chef_zero
   # You may wish to disable always updating cookbooks in CI or other testing environments.
   # For example:
   #   always_update_cookbooks: <%= !ENV['CI'] %>
-  chef_license: accept
   always_update_cookbooks: true
   log_level: info
   chef_license: accept-no-persist
@@ -20,16 +18,12 @@ verifier:
 
 platforms:
   - name: ubuntu-16.04
-    driver:
-      box: bento/ubuntu-16.04
   - name: centos-7
-    driver:
-    box: bento/centos-7
 
 suites:
   - name: default
     run_list:
-      - recipe[lampstack::default]
+      - recipe[lampstack1::default]
     verifier:
       inspec_tests:
         - test/integration/default

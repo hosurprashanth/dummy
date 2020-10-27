@@ -10,10 +10,6 @@ provisioner:
   #   always_update_cookbooks: <%= !ENV['CI'] %>
   chef_license: accept
   always_update_cookbooks: true
-  log_level: info
-  chef_license: accept-no-persist
-  product_name: chef
-  product_version: 14.10.9
 
 verifier:
   name: inspec
@@ -22,14 +18,13 @@ platforms:
   - name: ubuntu-16.04
     driver:
       box: bento/ubuntu-16.04
-  - name: centos-7
-    driver:
-    box: bento/centos-7
-
+  - #name: centos-7
+    #driver:
+    #box: bento/centos-7
 suites:
   - name: default
     run_list:
-      - recipe[lampstack::default]
+      - recipe[kitchenawsdemo::default]
     verifier:
       inspec_tests:
         - test/integration/default
